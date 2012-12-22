@@ -4,9 +4,9 @@ Version:	1.5.0
 Release:	0.1
 License:	GPL v2+
 Group:		X11/Applications
-URL:		http://mate-desktop.org
 Source0:	http://pub.mate-desktop.org/releases/1.5/%{name}-%{version}.tar.xz
 # Source0-md5:	64090402b0df99f874ca1cb2cc499745
+URL:		http://mate-desktop.org/
 BuildRequires:	desktop-file-utils
 BuildRequires:	icon-naming-utils
 BuildRequires:	mate-common
@@ -27,7 +27,7 @@ Requires:	hicolor-icon-theme
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-MATE Desktop session manager
+MATE Desktop session manager.
 
 %prep
 %setup -q
