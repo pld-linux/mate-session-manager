@@ -5,7 +5,7 @@
 Summary:	MATE Desktop session manager
 Name:		mate-session-manager
 Version:	1.5.0
-Release:	2
+Release:	3
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://pub.mate-desktop.org/releases/1.5/%{name}-%{version}.tar.xz
@@ -32,6 +32,12 @@ Requires:	gsettings-desktop-schemas
 Requires:	gtk-update-icon-cache
 Requires:	hicolor-icon-theme
 Requires:	mate-desktop >= 1.5
+# needed to satisfy 'filemanager' component (may be changed if alternatives available)
+Requires:	mate-file-manager
+# needed to satisfy 'panel' component (may be changed if alternatives available)
+Requires:	mate-panel
+# needed to satisfy 'windowmanager' component (may be changed if alternatives available)
+Requires:	mate-window-manager
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
