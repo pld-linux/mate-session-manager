@@ -1,3 +1,7 @@
+#
+# Conditional build:
+%bcond_with	apidocs		# DocBook docs (incomplete)
+
 Summary:	MATE Desktop session manager
 Name:		mate-session-manager
 Version:	1.5.0
@@ -20,6 +24,7 @@ BuildRequires:	mate-polkit-devel
 BuildRequires:	polkit-devel
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	upower-devel >= 0.9.0
+%{?with_apidocs:BuildRequires:	xmlto}
 BuildRequires:	xorg-lib-libSM-devel
 BuildRequires:	xz
 Requires:	glib2 >= 1:2.26.0
@@ -31,6 +36,17 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 MATE Desktop session manager.
 
+%package apidocs
+Summary:	Session Manager D-Bus API Reference
+Summary(pl.UTF-8):	Dokumentacja API Session Manager
+Group:		Documentation
+
+%description apidocs
+Session Manager D-Bus API Reference.
+
+%description apidocs -l pl.UTF-8
+Dokumentacja API Session Manager.
+
 %prep
 %setup -q
 
@@ -38,6 +54,8 @@ MATE Desktop session manager.
 NOCONFIGURE=1 ./autogen.sh
 %configure \
 	--disable-static \
+	%{!?with_apidocs:--disable-docbook-docs} \
+	%{?with_apidocs:--enable-docbook-docs --docdir=%{_gtkdocdir}/%{name}} \
 	--enable-ipv6 \
 	--with-gtk=2.0 \
 	--with-gnu-ld \
@@ -56,9 +74,6 @@ desktop-file-install \
 	--delete-original \
 	--dir=$RPM_BUILD_ROOT%{_desktopdir} \
 $RPM_BUILD_ROOT%{_desktopdir}/mate-session-properties.desktop
-
-# apidocs?
-%{__rm} $RPM_BUILD_ROOT%{_docdir}/%{name}/dbus/mate-session.html
 
 %find_lang %{name}
 
@@ -90,3 +105,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/scalable/apps/mate-session-properties.svg
 %{_datadir}/glib-2.0/schemas/org.mate.session.gschema.xml
 %{_datadir}/xsessions/mate.desktop
+
+%if %{with apidocs}
+%files apidocs
+%defattr(644,root,root,755)
+%{_gtkdocdir}/%{name}
+%endif
