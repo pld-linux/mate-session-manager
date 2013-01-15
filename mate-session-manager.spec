@@ -1,24 +1,26 @@
 Summary:	MATE Desktop session manager
 Name:		mate-session-manager
 Version:	1.5.0
-Release:	0.1
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://pub.mate-desktop.org/releases/1.5/%{name}-%{version}.tar.xz
 # Source0-md5:	64090402b0df99f874ca1cb2cc499745
-URL:		http://mate-desktop.org/
+URL:		http://wiki.mate-desktop.org/mate-session-manager
+BuildRequires:	dbus-glib-devel
 BuildRequires:	desktop-file-utils
+BuildRequires:	glib2-devel >= 1:2.16.0
+BuildRequires:	gsettings-desktop-schemas-devel
+BuildRequires:	gtk+2-devel >= 2:2.14.0
 BuildRequires:	icon-naming-utils
+BuildRequires:	intltool >= 0.40.0
 BuildRequires:	mate-common
 BuildRequires:	mate-icon-theme
-BuildRequires:	pkgconfig(dbus-glib-1)
-BuildRequires:	pkgconfig(gsettings-desktop-schemas)
-BuildRequires:	pkgconfig(gtk+-2.0)
-BuildRequires:	pkgconfig(polkit-agent-1)
-BuildRequires:	pkgconfig(polkit-gtk-mate-1)
-BuildRequires:	pkgconfig(sm)
-BuildRequires:	pkgconfig(upower-glib)
+BuildRequires:	mate-polkit-devel
+BuildRequires:	polkit-devel
 BuildRequires:	tar >= 1:1.22
+BuildRequires:	upower-devel >= 0.9.0
+BuildRequires:	xorg-lib-libSM-devel
 BuildRequires:	xz
 Requires:	glib2 >= 1:2.26.0
 Requires:	gsettings-desktop-schemas
@@ -55,6 +57,9 @@ desktop-file-install \
 	--dir=$RPM_BUILD_ROOT%{_desktopdir} \
 $RPM_BUILD_ROOT%{_desktopdir}/mate-session-properties.desktop
 
+# apidocs?
+%{__rm} $RPM_BUILD_ROOT%{_docdir}/%{name}/dbus/mate-session.html
+
 %find_lang %{name}
 
 %clean
@@ -75,7 +80,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/mate-session-properties
 %attr(755,root,root) %{_bindir}/mate-session-save
 %attr(755,root,root) %{_bindir}/mate-wm
-%{_mandir}/man1/*
+%{_mandir}/man1/mate-session-properties.1*
+%{_mandir}/man1/mate-session-save.1*
+%{_mandir}/man1/mate-session.1*
+%{_mandir}/man1/mate-wm.1*
 %{_desktopdir}/mate-session-properties.desktop
 %{_datadir}/mate-session
 %{_iconsdir}/hicolor/*/apps/*.png
