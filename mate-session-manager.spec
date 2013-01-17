@@ -14,14 +14,10 @@ URL:		http://wiki.mate-desktop.org/mate-session-manager
 BuildRequires:	dbus-glib-devel
 BuildRequires:	desktop-file-utils
 BuildRequires:	glib2-devel >= 1:2.16.0
-BuildRequires:	gsettings-desktop-schemas-devel
 BuildRequires:	gtk+2-devel >= 2:2.14.0
-BuildRequires:	icon-naming-utils
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	mate-common
-BuildRequires:	mate-icon-theme
-BuildRequires:	mate-polkit-devel
-BuildRequires:	polkit-devel
+BuildRequires:	pangox-compat-devel
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	upower-devel >= 0.9.0
 %{?with_apidocs:BuildRequires:	xmlto}
