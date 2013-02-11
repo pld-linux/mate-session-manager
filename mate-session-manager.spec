@@ -4,12 +4,12 @@
 
 Summary:	MATE Desktop session manager
 Name:		mate-session-manager
-Version:	1.5.0
-Release:	3
+Version:	1.5.1
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://pub.mate-desktop.org/releases/1.5/%{name}-%{version}.tar.xz
-# Source0-md5:	64090402b0df99f874ca1cb2cc499745
+# Source0-md5:	b7ff3686daadb97bc6cd7435a07374d9
 URL:		http://wiki.mate-desktop.org/mate-session-manager
 BuildRequires:	dbus-glib-devel
 BuildRequires:	desktop-file-utils
@@ -56,6 +56,7 @@ Dokumentacja API Session Manager.
 %build
 NOCONFIGURE=1 ./autogen.sh
 %configure \
+	--disable-silent-rules \
 	--disable-static \
 	%{!?with_apidocs:--disable-docbook-docs} \
 	%{?with_apidocs:--enable-docbook-docs --docdir=%{_gtkdocdir}/%{name}} \
@@ -64,12 +65,16 @@ NOCONFIGURE=1 ./autogen.sh
 	--with-gnu-ld \
 	--with-default-wm=marco \
 	--with-x
-%{__make} V=1
+
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+# mate < 1.5 did not exist in pld, avoid dependency on mate-conf
+%{__rm} $RPM_BUILD_ROOT%{_datadir}/MateConf/gsettings/mate-session.convert
 
 desktop-file-install \
 	--remove-category="MATE" \
