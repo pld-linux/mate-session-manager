@@ -1,4 +1,8 @@
 #
+# TODO
+# - Terminal=true, depends in mate-terminal, but probably should take preferred terminal application
+# mate-session[4970]: WARNING: Could not launch application 'nvidia-settings.desktop': Unable to start application: Failed to execute child process "xdg-terminal" (No such file or directory)
+
 # Conditional build:
 %bcond_with	apidocs		# DocBook docs (incomplete)
 
