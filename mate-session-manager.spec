@@ -5,15 +5,16 @@
 
 # Conditional build:
 %bcond_with	apidocs		# DocBook docs (incomplete)
+%bcond_without	systemd # enable systemd support for default (when systemd is not running fallback to ConsoleKit)
 
 Summary:	MATE Desktop session manager
 Name:		mate-session-manager
-Version:	1.5.1
+Version:	1.5.2
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://pub.mate-desktop.org/releases/1.5/%{name}-%{version}.tar.xz
-# Source0-md5:	b7ff3686daadb97bc6cd7435a07374d9
+# Source0-md5:	75373b3d5d0d8f5f8f105f34de238a11
 URL:		http://wiki.mate-desktop.org/mate-session-manager
 BuildRequires:	dbus-glib-devel
 BuildRequires:	desktop-file-utils
@@ -22,6 +23,7 @@ BuildRequires:	gtk+2-devel >= 2:2.14.0
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	mate-common
 BuildRequires:	pangox-compat-devel
+%{?with_systemd:BuildRequires:	systemd-devel >= 183}
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	upower-devel >= 0.9.0
 %{?with_apidocs:BuildRequires:	xmlto}
@@ -64,6 +66,7 @@ NOCONFIGURE=1 ./autogen.sh
 	--disable-static \
 	%{!?with_apidocs:--disable-docbook-docs} \
 	%{?with_apidocs:--enable-docbook-docs --docdir=%{_gtkdocdir}/%{name}} \
+	%{__enable_disable systemd systemd} \
 	--enable-ipv6 \
 	--with-gtk=2.0 \
 	--with-gnu-ld \
