@@ -9,12 +9,12 @@
 
 Summary:	MATE Desktop session manager
 Name:		mate-session-manager
-Version:	1.5.2
+Version:	1.6.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://pub.mate-desktop.org/releases/1.5/%{name}-%{version}.tar.xz
-# Source0-md5:	75373b3d5d0d8f5f8f105f34de238a11
+Source0:	http://pub.mate-desktop.org/releases/1.6/%{name}-%{version}.tar.xz
+# Source0-md5:	a8e1e83cabbf0ec3ec130c07f9038dcd
 URL:		http://wiki.mate-desktop.org/mate-session-manager
 BuildRequires:	dbus-glib-devel
 BuildRequires:	desktop-file-utils
