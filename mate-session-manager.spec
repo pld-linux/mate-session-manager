@@ -9,12 +9,12 @@
 
 Summary:	MATE Desktop session manager
 Name:		mate-session-manager
-Version:	1.6.0
+Version:	1.6.1
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://pub.mate-desktop.org/releases/1.6/%{name}-%{version}.tar.xz
-# Source0-md5:	a8e1e83cabbf0ec3ec130c07f9038dcd
+# Source0-md5:	e841ff0917f8b64ad33267b0eb5f8364
 URL:		http://wiki.mate-desktop.org/mate-session-manager
 BuildRequires:	dbus-glib-devel
 BuildRequires:	desktop-file-utils
@@ -60,7 +60,12 @@ Dokumentacja API Session Manager.
 %setup -q
 
 %build
-NOCONFIGURE=1 ./autogen.sh
+%{__intltoolize}
+%{?with_apidocs:%{__gtkdocize}}
+%{__aclocal}
+%{__autoheader}
+%{__autoconf}
+%{__automake}
 %configure \
 	--disable-silent-rules \
 	--disable-static \
@@ -115,7 +120,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/mate-session.1*
 %{_mandir}/man1/mate-wm.1*
 %{_desktopdir}/mate-session-properties.desktop
-%{_datadir}/mate-session
+%{_datadir}/mate-session-manager
 %{_iconsdir}/hicolor/*/apps/*.png
 %{_iconsdir}/hicolor/scalable/apps/mate-session-properties.svg
 %{_datadir}/glib-2.0/schemas/org.mate.session.gschema.xml
