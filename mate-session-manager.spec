@@ -11,12 +11,12 @@
 Summary:	MATE Desktop session manager
 Summary(pl.UTF-8):	Zarządca sesji środowiska MATE Desktop
 Name:		mate-session-manager
-Version:	1.6.1
+Version:	1.8.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://pub.mate-desktop.org/releases/1.6/%{name}-%{version}.tar.xz
-# Source0-md5:	e841ff0917f8b64ad33267b0eb5f8364
+Source0:	http://pub.mate-desktop.org/releases/1.8/%{name}-%{version}.tar.xz
+# Source0-md5:	6841203f347da7baf0696d42289b1240
 URL:		http://wiki.mate-desktop.org/mate-session-manager
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake >= 1:1.9
@@ -43,6 +43,8 @@ BuildRequires:	xorg-lib-libXext-devel
 BuildRequires:	xorg-lib-libXrender-devel
 BuildRequires:	xorg-lib-libXtst-devel
 BuildRequires:	xz
+# needed to satisfy 'filemanager' component (may be changed if alternatives available)
+Requires:	caja
 Requires:	dbus-glib >= 0.76
 Requires:	glib2 >= 1:2.26.0
 Requires:	gsettings-desktop-schemas
@@ -50,13 +52,11 @@ Requires:	gsettings-desktop-schemas
 %{?with_gtk3:Requires:	gtk+3 >= 3.0.0}
 Requires:	gtk-update-icon-cache
 Requires:	hicolor-icon-theme
+# needed to satisfy 'windowmanager' component (may be changed if alternatives available)
+Requires:	marco
 Requires:	mate-desktop >= 1.5
-# needed to satisfy 'filemanager' component (may be changed if alternatives available)
-Requires:	mate-file-manager
 # needed to satisfy 'panel' component (may be changed if alternatives available)
 Requires:	mate-panel
-# needed to satisfy 'windowmanager' component (may be changed if alternatives available)
-Requires:	mate-window-manager
 Requires:	upower-libs >= 0.9.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -107,6 +107,7 @@ rm -rf $RPM_BUILD_ROOT
 
 # mate < 1.5 did not exist in pld, avoid dependency on mate-conf
 %{__rm} $RPM_BUILD_ROOT%{_datadir}/MateConf/gsettings/mate-session.convert
+%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/cmn
 
 desktop-file-install \
 	--remove-category="MATE" \
