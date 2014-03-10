@@ -1,0 +1,12 @@
+diff -urN mate-session-manager-1.8.0.orig/po/en_US.po mate-session-manager-1.8.0/po/en_US.po
+--- mate-session-manager-1.8.0.orig/po/en_US.po	2014-03-10 11:59:23.518462636 +0100
++++ mate-session-manager-1.8.0/po/en_US.po	2014-03-10 11:59:36.015126794 +0100
+@@ -373,7 +373,7 @@
+ 
+ #: ../mate-session/gsm-logout-dialog.c:470
+ msgid "S_uspend"
+-msgstr "Suspend"
++msgstr "S_uspend"
+ 
+ #: ../mate-session/gsm-logout-dialog.c:476
+ msgid "_Hibernate"

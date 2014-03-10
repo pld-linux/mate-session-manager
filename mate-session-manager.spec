@@ -17,6 +17,7 @@ License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://pub.mate-desktop.org/releases/1.8/%{name}-%{version}.tar.xz
 # Source0-md5:	6841203f347da7baf0696d42289b1240
+Patch0:		%{name}-en_us_suspend_hotkey.patch
 URL:		http://wiki.mate-desktop.org/mate-session-manager
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake >= 1:1.9
@@ -79,6 +80,7 @@ Dokumentacja API D-Bus MATE Session Managera.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %{__intltoolize}
