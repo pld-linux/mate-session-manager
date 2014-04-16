@@ -35,7 +35,7 @@ BuildRequires:	pangox-compat-devel
 BuildRequires:	pkgconfig
 %{?with_systemd:BuildRequires:	systemd-devel >= 1:183}
 BuildRequires:	tar >= 1:1.22
-BuildRequires:	upower-devel >= 0.9.0
+#BuildRequires:	upower-devel >= 0.9.0
 %{?with_apidocs:BuildRequires:	xmlto}
 BuildRequires:	xorg-lib-libICE-devel
 BuildRequires:	xorg-lib-libSM-devel
@@ -58,7 +58,7 @@ Requires:	marco
 Requires:	mate-desktop >= 1.5
 # needed to satisfy 'panel' component (may be changed if alternatives available)
 Requires:	mate-panel
-Requires:	upower-libs >= 0.9.0
+#Requires:	upower-libs >= 0.9.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -94,6 +94,7 @@ Dokumentacja API D-Bus MATE Session Managera.
 	--enable-ipv6 \
 	--disable-silent-rules \
 	--disable-static \
+	--disable-upower \
 	--with-default-wm=marco \
 	--with-gnu-ld \
 	%{?with_gtk3:--with-gtk=3.0} \
