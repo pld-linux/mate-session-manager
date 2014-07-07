@@ -7,6 +7,7 @@
 %bcond_without	apidocs	# DocBook docs
 %bcond_with	gtk3	# use GTK+ 3.x instead of 2.x
 %bcond_without	systemd	# systemd support for default (when systemd is not running fallback to ConsoleKit)
+%bcond_with	upower	# UPower suspend/hibernate support (0.9.x only)
 
 Summary:	MATE Desktop session manager
 Summary(pl.UTF-8):	Zarządca sesji środowiska MATE Desktop
@@ -35,7 +36,7 @@ BuildRequires:	pangox-compat-devel
 BuildRequires:	pkgconfig
 %{?with_systemd:BuildRequires:	systemd-devel >= 1:183}
 BuildRequires:	tar >= 1:1.22
-#BuildRequires:	upower-devel >= 0.9.0
+%{?with_upower:BuildRequires:	upower-devel >= 0.9.0}
 %{?with_apidocs:BuildRequires:	xmlto}
 BuildRequires:	xorg-lib-libICE-devel
 BuildRequires:	xorg-lib-libSM-devel
@@ -58,7 +59,7 @@ Requires:	marco
 Requires:	mate-desktop >= 1.5
 # needed to satisfy 'panel' component (may be changed if alternatives available)
 Requires:	mate-panel
-#Requires:	upower-libs >= 0.9.0
+%{?with_upower:Requires:	upower-libs >= 0.9.0}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -94,7 +95,7 @@ Dokumentacja API D-Bus MATE Session Managera.
 	--enable-ipv6 \
 	--disable-silent-rules \
 	--disable-static \
-	--disable-upower \
+	%{!?with_upower:--disable-upower} \
 	--with-default-wm=marco \
 	--with-gnu-ld \
 	%{?with_gtk3:--with-gtk=3.0} \
@@ -110,7 +111,6 @@ rm -rf $RPM_BUILD_ROOT
 
 # mate < 1.5 did not exist in pld, avoid dependency on mate-conf
 %{__rm} $RPM_BUILD_ROOT%{_datadir}/MateConf/gsettings/mate-session.convert
-%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/cmn
 
 desktop-file-install \
 	--remove-category="MATE" \
