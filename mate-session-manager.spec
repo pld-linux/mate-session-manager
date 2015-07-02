@@ -13,7 +13,7 @@ Summary:	MATE Desktop session manager
 Summary(pl.UTF-8):	Zarządca sesji środowiska MATE Desktop
 Name:		mate-session-manager
 Version:	1.10.1
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://pub.mate-desktop.org/releases/1.10/%{name}-%{version}.tar.xz
@@ -73,6 +73,9 @@ Zarządca sesji środowiska MATE Desktop.
 Summary:	MATE Session Manager D-Bus API Reference
 Summary(pl.UTF-8):	Dokumentacja API D-Bus MATE Session Managera
 Group:		Documentation
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description apidocs
 Session Manager D-Bus API Reference.
