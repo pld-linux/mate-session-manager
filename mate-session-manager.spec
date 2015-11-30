@@ -12,12 +12,12 @@
 Summary:	MATE Desktop session manager
 Summary(pl.UTF-8):	Zarządca sesji środowiska MATE Desktop
 Name:		mate-session-manager
-Version:	1.12.0
+Version:	1.12.1
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://pub.mate-desktop.org/releases/1.12/%{name}-%{version}.tar.xz
-# Source0-md5:	e7bb01b5f91a6b287fef8e77e94af3e7
+# Source0-md5:	dd14694806eca860d6f7fd25297af7dd
 Patch0:		%{name}-en_us_suspend_hotkey.patch
 URL:		http://wiki.mate-desktop.org/mate-session-manager
 BuildRequires:	autoconf >= 2.53
@@ -31,7 +31,6 @@ BuildRequires:	intltool >= 0.50.1
 BuildRequires:	libtool >= 1:1.4.3
 %{?with_apidocs:BuildRequires:	libxslt-progs}
 BuildRequires:	mate-common
-BuildRequires:	mate-desktop-devel >= 1.9.3
 BuildRequires:	pango-devel
 BuildRequires:	pangox-compat-devel
 BuildRequires:	pkgconfig
@@ -58,7 +57,6 @@ Requires:	gtk-update-icon-cache
 Requires:	hicolor-icon-theme
 # needed to satisfy 'windowmanager' component (may be changed if alternatives available)
 Requires:	marco
-Requires:	mate-desktop >= 1.9.3
 # needed to satisfy 'panel' component (may be changed if alternatives available)
 Requires:	mate-panel
 %{?with_upower:Requires:	upower-libs >= 0.9.0}
