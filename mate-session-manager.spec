@@ -12,12 +12,12 @@
 Summary:	MATE Desktop session manager
 Summary(pl.UTF-8):	Zarządca sesji środowiska MATE Desktop
 Name:		mate-session-manager
-Version:	1.12.2
+Version:	1.14.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://pub.mate-desktop.org/releases/1.12/%{name}-%{version}.tar.xz
-# Source0-md5:	20277508ac89a9204954bdac11e6e8b3
+Source0:	http://pub.mate-desktop.org/releases/1.14/%{name}-%{version}.tar.xz
+# Source0-md5:	41b0b5dfd4a2978546119ed9721c95e1
 Patch0:		%{name}-en_us_suspend_hotkey.patch
 URL:		http://wiki.mate-desktop.org/mate-session-manager
 BuildRequires:	autoconf >= 2.53
@@ -112,8 +112,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-# mate < 1.5 did not exist in pld, avoid dependency on mate-conf
-%{__rm} $RPM_BUILD_ROOT%{_datadir}/MateConf/gsettings/mate-session.convert
+%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/{frp,jv}
 
 desktop-file-install \
 	--remove-category="MATE" \
