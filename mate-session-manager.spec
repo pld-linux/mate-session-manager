@@ -45,6 +45,7 @@ BuildRequires:	xorg-lib-libXau-devel
 BuildRequires:	xorg-lib-libXext-devel
 BuildRequires:	xorg-lib-libXrender-devel
 BuildRequires:	xorg-lib-libXtst-devel
+BuildRequires:	xorg-lib-xtrans-devel
 BuildRequires:	xz
 # needed to satisfy 'filemanager' component (may be changed if alternatives available)
 Requires:	caja
