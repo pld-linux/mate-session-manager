@@ -5,27 +5,25 @@
 
 # Conditional build:
 %bcond_without	apidocs	# DocBook docs
-%bcond_with	gtk3	# use GTK+ 3.x instead of 2.x
 %bcond_without	systemd	# systemd support for default (when systemd is not running fallback to ConsoleKit)
 %bcond_with	upower	# UPower suspend/hibernate support (0.9.x only)
 
 Summary:	MATE Desktop session manager
 Summary(pl.UTF-8):	Zarządca sesji środowiska MATE Desktop
 Name:		mate-session-manager
-Version:	1.14.1
+Version:	1.16.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://pub.mate-desktop.org/releases/1.14/%{name}-%{version}.tar.xz
-# Source0-md5:	81bd2b0c54abae53d52a3df3e4049647
+Source0:	http://pub.mate-desktop.org/releases/1.16/%{name}-%{version}.tar.xz
+# Source0-md5:	550aa389eb23030c13dec8c1e288e6ae
 URL:		http://wiki.mate-desktop.org/mate-session-manager
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	dbus-glib-devel >= 0.76
 BuildRequires:	desktop-file-utils
 BuildRequires:	glib2-devel >= 1:2.36.0
-%{!?with_gtk3:BuildRequires:	gtk+2-devel >= 2:2.24.0}
-%{?with_gtk3:BuildRequires:	gtk+3-devel >= 3.0.0}
+BuildRequires:	gtk+3-devel >= 3.14.0
 BuildRequires:	intltool >= 0.50.1
 BuildRequires:	libtool >= 1:1.4.3
 %{?with_apidocs:BuildRequires:	libxslt-progs}
@@ -51,8 +49,7 @@ Requires:	caja
 Requires:	dbus-glib >= 0.76
 Requires:	glib2 >= 1:2.36.0
 Requires:	gsettings-desktop-schemas
-%{!?with_gtk3:Requires:	gtk+2 >= 2:2.24.0}
-%{?with_gtk3:Requires:	gtk+3 >= 3.0.0}
+Requires:	gtk+3 >= 3.14.0
 Requires:	gtk-update-icon-cache
 Requires:	hicolor-icon-theme
 # needed to satisfy 'windowmanager' component (may be changed if alternatives available)
@@ -100,7 +97,6 @@ Dokumentacja API D-Bus MATE Session Managera.
 	%{!?with_upower:--disable-upower} \
 	--with-default-wm=marco \
 	--with-gnu-ld \
-	%{?with_gtk3:--with-gtk=3.0} \
 	%{__with_without systemd} \
 	--with-x
 
@@ -138,7 +134,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog MAINTAINERS NEWS README
+%doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_bindir}/mate-session
 %attr(755,root,root) %{_bindir}/mate-session-inhibit
 %attr(755,root,root) %{_bindir}/mate-session-properties
