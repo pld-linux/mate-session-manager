@@ -10,19 +10,19 @@
 Summary:	MATE Desktop session manager
 Summary(pl.UTF-8):	Zarządca sesji środowiska MATE Desktop
 Name:		mate-session-manager
-Version:	1.18.2
+Version:	1.20.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://pub.mate-desktop.org/releases/1.18/%{name}-%{version}.tar.xz
-# Source0-md5:	3d965fa97582f33714ec863925cf9e27
+Source0:	http://pub.mate-desktop.org/releases/1.20/%{name}-%{version}.tar.xz
+# Source0-md5:	b39090471120b59f89ce61a6463c4891
 URL:		http://wiki.mate-desktop.org/mate-session-manager
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	dbus-glib-devel >= 0.76
 BuildRequires:	desktop-file-utils
-BuildRequires:	glib2-devel >= 1:2.36.0
-BuildRequires:	gtk+3-devel >= 3.14.0
+BuildRequires:	glib2-devel >= 1:2.50.0
+BuildRequires:	gtk+3-devel >= 3.22.0
 BuildRequires:	intltool >= 0.50.1
 BuildRequires:	libtool >= 1:1.4.3
 %{?with_apidocs:BuildRequires:	libxslt-progs}
@@ -45,9 +45,9 @@ BuildRequires:	xz
 # needed to satisfy 'filemanager' component (may be changed if alternatives available)
 Requires:	caja
 Requires:	dbus-glib >= 0.76
-Requires:	glib2 >= 1:2.36.0
+Requires:	glib2 >= 1:2.50.0
 Requires:	gsettings-desktop-schemas
-Requires:	gtk+3 >= 3.14.0
+Requires:	gtk+3 >= 3.22.0
 Requires:	gtk-update-icon-cache
 Requires:	hicolor-icon-theme
 # needed to satisfy 'windowmanager' component (may be changed if alternatives available)
