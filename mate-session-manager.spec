@@ -103,7 +103,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/{es_ES,frp,kab,ku_IQ,jv,ur_PK}
+# not supported by glibc yet
+%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/{es_ES,frp,ku_IQ,jv,pms,ur_PK}
 
 desktop-file-install \
 	--remove-category="MATE" \
@@ -111,9 +112,6 @@ desktop-file-install \
 	--delete-original \
 	--dir=$RPM_BUILD_ROOT%{_desktopdir} \
 	$RPM_BUILD_ROOT%{_desktopdir}/mate-session-properties.desktop
-
-# not supported by glibc yet
-%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/pms
 
 %find_lang %{name}
 
