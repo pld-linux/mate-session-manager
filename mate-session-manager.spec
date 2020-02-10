@@ -10,20 +10,24 @@
 Summary:	MATE Desktop session manager
 Summary(pl.UTF-8):	Zarządca sesji środowiska MATE Desktop
 Name:		mate-session-manager
-Version:	1.22.3
+Version:	1.24.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://pub.mate-desktop.org/releases/1.22/%{name}-%{version}.tar.xz
-# Source0-md5:	eacbc26da120e6f674ebba2a79f3ca1d
+Source0:	http://pub.mate-desktop.org/releases/1.24/%{name}-%{version}.tar.xz
+# Source0-md5:	898bd3aae94f0998b189a32db38b288a
 URL:		http://wiki.mate-desktop.org/mate-session-manager
+BuildRequires:	EGL-devel
+BuildRequires:	OpenGL-devel
+BuildRequires:	OpenGLESv2-devel
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	dbus-glib-devel >= 0.76
 BuildRequires:	desktop-file-utils
+BuildRequires:	gettext-tools >= 0.19.8
 BuildRequires:	glib2-devel >= 1:2.50.0
 BuildRequires:	gtk+3-devel >= 3.22.0
-BuildRequires:	intltool >= 0.50.1
+BuildRequires:	libepoxy-devel
 BuildRequires:	libtool >= 1:1.4.3
 %{?with_apidocs:BuildRequires:	libxslt-progs}
 BuildRequires:	mate-common
@@ -37,6 +41,7 @@ BuildRequires:	xorg-lib-libICE-devel
 BuildRequires:	xorg-lib-libSM-devel
 BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	xorg-lib-libXau-devel
+BuildRequires:	xorg-lib-libXcomposite-devel
 BuildRequires:	xorg-lib-libXext-devel
 BuildRequires:	xorg-lib-libXrender-devel
 BuildRequires:	xorg-lib-libXtst-devel
@@ -80,7 +85,6 @@ Dokumentacja API D-Bus MATE Session Managera.
 %setup -q
 
 %build
-%{__intltoolize}
 %{__aclocal}
 %{__autoheader}
 %{__autoconf}
@@ -134,6 +138,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/mate-session-properties
 %attr(755,root,root) %{_bindir}/mate-session-save
 %attr(755,root,root) %{_bindir}/mate-wm
+%attr(755,root,root) %{_libexecdir}/mate-session-check-accelerated
+%attr(755,root,root) %{_libexecdir}/mate-session-check-accelerated-gl-helper
+%attr(755,root,root) %{_libexecdir}/mate-session-check-accelerated-gles-helper
 %{_mandir}/man1/mate-session-inhibit.1*
 %{_mandir}/man1/mate-session-properties.1*
 %{_mandir}/man1/mate-session-save.1*
