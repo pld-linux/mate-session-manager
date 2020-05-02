@@ -32,7 +32,6 @@ BuildRequires:	libtool >= 1:1.4.3
 %{?with_apidocs:BuildRequires:	libxslt-progs}
 BuildRequires:	mate-common
 BuildRequires:	pango-devel
-BuildRequires:	pangox-compat-devel
 BuildRequires:	pkgconfig
 %{?with_systemd:BuildRequires:	systemd-devel >= 1:183}
 BuildRequires:	tar >= 1:1.22
