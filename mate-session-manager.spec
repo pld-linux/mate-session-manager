@@ -10,12 +10,12 @@
 Summary:	MATE Desktop session manager
 Summary(pl.UTF-8):	Zarządca sesji środowiska MATE Desktop
 Name:		mate-session-manager
-Version:	1.24.0
+Version:	1.24.1
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://pub.mate-desktop.org/releases/1.24/%{name}-%{version}.tar.xz
-# Source0-md5:	898bd3aae94f0998b189a32db38b288a
+# Source0-md5:	976a7029918fbc0b2d767e71282b7a76
 URL:		http://wiki.mate-desktop.org/mate-session-manager
 BuildRequires:	EGL-devel
 BuildRequires:	OpenGL-devel
