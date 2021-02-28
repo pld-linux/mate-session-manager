@@ -70,9 +70,7 @@ Zarządca sesji środowiska MATE Desktop.
 Summary:	MATE Session Manager D-Bus API Reference
 Summary(pl.UTF-8):	Dokumentacja API D-Bus MATE Session Managera
 Group:		Documentation
-%if "%{_rpmversion}" >= "5"
 BuildArch:	noarch
-%endif
 
 %description apidocs
 Session Manager D-Bus API Reference.
