@@ -16,7 +16,7 @@ License:	GPL v2+
 Group:		X11/Applications
 Source0:	https://pub.mate-desktop.org/releases/1.26/%{name}-%{version}.tar.xz
 # Source0-md5:	5f81304bbf60552b5078924dc57fc47c
-URL:		http://wiki.mate-desktop.org/mate-session-manager
+URL:		https://wiki.mate-desktop.org/mate-desktop/components/mate-session-manager/
 BuildRequires:	EGL-devel
 BuildRequires:	OpenGL-devel
 BuildRequires:	OpenGLESv2-devel
@@ -33,6 +33,8 @@ BuildRequires:	libtool >= 1:1.4.3
 BuildRequires:	mate-common
 BuildRequires:	pango-devel
 BuildRequires:	pkgconfig
+BuildRequires:	rpm-build >= 4.6
+BuildRequires:	rpmbuild(macros) >= 1.596
 %{?with_systemd:BuildRequires:	systemd-devel >= 1:183}
 BuildRequires:	tar >= 1:1.22
 %{?with_apidocs:BuildRequires:	xmlto}
